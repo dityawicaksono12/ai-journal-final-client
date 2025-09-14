@@ -53,7 +53,16 @@ const Sidebar = () => {
             <div className='flex flex-col text-sm'>
                 <p>Community Images</p>
             </div>
-        </div>
+    </div>
+    {/* Credit Purchases Option */}   
+    <div onClick={()=> {navigate('/credits')}} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
+            <img src={assets.coin_icon} className='w-4.5 dark:invert' alt=''/>
+            <div className='flex flex-col text-sm'>
+                <p>Credits : {user?.credits} </p>
+                <p className='text-xs text-gray-400'>Purchase credit to use app</p>
+            </div>
+    </div>
+
     </div>
   )
 }
