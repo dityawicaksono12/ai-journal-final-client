@@ -26,6 +26,15 @@ export const AppContextProvider = ({ children }) => {
         setSelectedChat(dummyChats[0])
     }
 
+    // apply dark mode class to <html> when theme changes
+    useEffect(() => {
+        if(theme === 'dark'){
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    },[theme])
+
     // whenever user changes, fetch/reset chats accordingly
     useEffect(() => {
         if(user){
