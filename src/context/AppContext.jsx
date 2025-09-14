@@ -33,6 +33,7 @@ export const AppContextProvider = ({ children }) => {
         } else {
             document.documentElement.classList.remove('dark');
         }
+        localStorage.setItem('theme', theme)
     },[theme])
 
     // whenever user changes, fetch/reset chats accordingly
@@ -53,7 +54,7 @@ export const AppContextProvider = ({ children }) => {
 
     // Expose state and functions to children via context
     const value = {
-        navigate, user, setUser, fetchUser, fetchUsersChats, chats, setChats, selectedChat, setSelectedChat, theme
+        navigate, user, setUser, fetchUser, fetchUsersChats, chats, setChats, selectedChat, setSelectedChat, theme, setTheme
     }
 
     return (
