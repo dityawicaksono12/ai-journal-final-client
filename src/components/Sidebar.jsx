@@ -3,7 +3,7 @@ import { useAppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 import moment from 'moment'
 
-const Sidebar = () => {
+const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
     // Consume global state from AppContext
     const {chats, selectedChat, theme, setTheme, user, navigate} = useAppContext()
 
@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   return (
     // Sidebar container with dark-mode aware styling
-    <div className='flex flex-col h-screen min-w-72 p-5 dark:bg-gradient-to-b from-[#2421241/30 to-[#0000001/30 border-r border-[#80609F1/30 backdrop-blur-3x1 transition-all duration-500 max-md:absolute left-0 z-1'>
+    <div className={`flex flex-col h-screen min-w-72 p-5 dark:bg-gradient-to-b from-[#2421241/30 to-[#0000001/30 border-r border-[#80609F1/30 backdrop-blur-3x1 transition-all duration-500 max-md:absolute left-0 z-1 ${!isMenuOpen && 'max-md:-translate-x-full'}`}>
       {/* Logo switches based on current theme */}
       <img src={theme === 'dark' ? assets.logo_full : assets.logo_full_dark} alt="" className='w-full max-w-48'/>
     
@@ -82,7 +82,7 @@ const Sidebar = () => {
     </div>
 
         {/* Mobile screen close icon */} 
-        <img src={assets.close_icon} className='absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert'/>
+        <img onClick={()=> setIsMenuOpen(false)} src={assets.close_icon} className='absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert'/>
 
     </div>
   )
