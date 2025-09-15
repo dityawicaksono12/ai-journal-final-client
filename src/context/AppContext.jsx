@@ -12,7 +12,7 @@ export const AppContextProvider = ({ children }) => {
     // Global states
     const [user, setUser ] = useState(null);                                        // logged-in user
     const [chats, setChats ] = useState([]);                                        // all available chats for the user
-    const [selectedChat, setSelectedChat ] = useState([]);                          // currently active chats
+    const [selectedChat, setSelectedChat ] = useState(null);                          // currently active chats
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');   // App theme (in localStorage)
 
     // simulate fetching user data
@@ -23,7 +23,7 @@ export const AppContextProvider = ({ children }) => {
     // simulate fetching chats for a logged-in user
     const fetchUsersChats = async () => {
         setChats(dummyChats)
-        setSelectedChat(dummyChats[0])
+        setSelectedChat()
     }
 
     // apply dark mode class to <html> when theme changes
