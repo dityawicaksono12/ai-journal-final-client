@@ -9,14 +9,14 @@ const ChatBox = () => {
 
   // Local state: messages + loading flag
   const [messages, setMessages] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   
   // Local states for prompt input, mode toggle, and publish flag
   const [prompt, setPrompt] = useState('')
   const [mode, setMode] = useState('text')
   const [isPublished, setIsPublished] = useState(false)
 
-  
+
   const onSubmit = async (e) => {
     e.preventDefault()
   }
@@ -51,6 +51,14 @@ const ChatBox = () => {
         </div>
       }
       </div>
+
+      {/* show checkbox only if user is in "image" generation mode */}
+      {mode === 'image' && (
+        <label className='inline-flex items-center gap-2 mb-3 text-sm mx-auto'>
+          <p className='text-xs'>Publish Generated Image to Community</p>
+          <input type='checkbox' className='cursor-pointer' checked={isPublished} onChange={(e)=>setIsPublished(e.target.checked)}/>
+        </label>
+      )}
 
       {/* Prompt Input box */}
       <form onSubmit={onSubmit} className='bg-primary/20 dark:bg-[#583C79]/30 border border-primary dark:border-[#80609F]/30 rounded-full w-full max-w-2xl p-3 p1-4 mx-auto flex gap-4 items-center'>
