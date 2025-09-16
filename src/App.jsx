@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
 import Sidebar from './components/Sidebar'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import ChatBox from './components/ChatBox'
 import Credits from './pages/Credits'
 import Community from './pages/Community'
 import { assets } from './assets/assets'
 import './assets/prism.css'
+import Loading from './pages/Loading'
 
 const App = () => {
   // local state to track whether the sidebar menu is open (mobile)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const {pathname} = useLocation()
+
+  if(pathname === '/loading') return <Loading/>
+
+
   return (
     <>
     {/* Mobile hamburger icon to open sidebar */}
