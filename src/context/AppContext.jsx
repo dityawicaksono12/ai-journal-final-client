@@ -17,7 +17,7 @@ export const AppContextProvider = ({ children }) => {
 
     // simulate fetching user data
     const fetchUser = async () => {
-        setUser(dummyUserData)
+        setUser()  // no user go to login page
     }
 
     // simulate fetching chats for a logged-in user
